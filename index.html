@@ -88,8 +88,9 @@
                         const endDate = $('input[name="endDate"]').val();
                         msg += `endDate=${endDate}`;
                     }
+                    window.alert(msg);
                     $.ajax({
-                        url: 'https://script.google.com/macros/s/AKfycbwojTA12gNZGI0rfmAe0Z7M_DyCFPHbpxhVa9-2Z7-A_11Z_ZU03djJAfQfX4_3Vfyn/exec',
+                        url: 'https://script.google.com/macros/s/AKfycbx_FxJ6AVf1_xIdKL5vA0qcfokgeobWOOW1ZSoHu_nJcpUxBwnQSwSRL0r8WIXT7Q-e/exec',
                         method: 'post',
                         headers: {
                             'Accept': 'application/json',
