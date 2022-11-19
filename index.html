@@ -33,7 +33,7 @@
             <p>毎月積立てを行う金額を入力してください（半角数字, 例：5000）</p>
             <input class="form-control w-100 mt-1" name="amountOfMoney" required>
         </div>
-        <div id="endDate">
+        <div id="endDate" style="display: none">
             <p>積立てを完了させたい日付を入力して下さい - 積立期間は最低2ヶ月以上からになります。後からでも変更可能ですので、ご安心くださいませ。</p>
             <input class="form-control w-100 mt-1" name="endDate" required>
         </div>
@@ -61,20 +61,6 @@
             });
         }
 
-        function sendText(text) {
-            liff.sendMessages([{
-                'type': 'text',
-                'text': text
-            }]).then(function () {
-                liff.closeWindow();
-            }).catch(function (error) {
-                window.alert('Failed to send message ' + error);
-            });
-        }
-
-        const params = (new URL(document.location)).searchParams;
-        const key = params.get('key');
-
         $(function () {
             $('input[name="type"]:radio').change(function (e) {
                 const val = $(this).val;
@@ -90,14 +76,19 @@
                 e.preventDefault();
                 liff.getProfile().then(function (profile) {
                     const msg = `${profile.userId}`;
+                    const url = $('input[name="url"]').val();
+                    const price = $('input[name="price"]').val();
+                    const type = $('input[name="type"]').val();
+                    const amountOfMoney = $('input[name="amountOfMoney"]').val();
+                    const endDate = $('input[name="endDate"]').val();
                     $.ajax({
-                        url: '',
+                        url: 'https://script.google.com/macros/s/AKfycbw7D0mmbaFBAE_yiiH-taP9cFQ9c1kl3CgddvQ8iZxW0OwvsZpnA_cyd0ZprptnUEVY/exec',
                         method: 'post',
                         headers: {
                             'Accept': 'application/json',
                             'Content-Type': 'application/x-www-form-urlencoded',
                         },
-                        data: `userId=${profile.userId}`
+                        data: `userId=${profile.userId}&url=${url}&price=${price}&type=${type}&amountOfMoney=${amountOfMoney}&endDate=${endDate}`
                     }).then(function () {
                         liff.closeWindow();
                         return false;
