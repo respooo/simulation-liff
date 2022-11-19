@@ -17,7 +17,7 @@
         </div>
         <p class="mt-3">購入を検討している商品の金額を入力してください - カンマ入れずに入力をお願い致します。（半角数字, 例：50000）</p>
         <div>
-            <input class="form-control w-100 mt-1" name="price" required>
+            <input type="number" class="form-control w-100 mt-1" name="price" required>
         </div>
         <p>どちらの積立方法を検討していますか？ - 1. 月々いくら貯金
             「月々いくらまでなら支払えるか」を入力して頂き、そこから商品単価を考慮し、「目標達成日」を算出します。
@@ -31,11 +31,11 @@
         </div>
         <div id="amountOfMoney">
             <p>毎月積立てを行う金額を入力してください（半角数字, 例：5000）</p>
-            <input class="form-control w-100 mt-1" name="amountOfMoney" required>
+            <input type="number" class="form-control w-100 mt-1" name="amountOfMoney" required>
         </div>
         <div id="endDate">
             <p>積立てを完了させたい日付を入力して下さい - 積立期間は最低2ヶ月以上からになります。後からでも変更可能ですので、ご安心くださいませ。</p>
-            <input class="form-control w-100 mt-1" name="endDate">
+            <input type="date" class="form-control w-100 mt-1" name="endDate">
         </div>
         <input type="submit" class="mt-4 btn btn-primary" value="送信">
     </form>
@@ -90,7 +90,7 @@
                     }
                     window.alert(msg);
                     $.ajax({
-                        url: `https://script.google.com/macros/s/AKfycbx_FxJ6AVf1_xIdKL5vA0qcfokgeobWOOW1ZSoHu_nJcpUxBwnQSwSRL0r8WIXT7Q-e/exec?${msg}`,
+                        url: `https://script.google.com/macros/s/AKfycbyQRlOH3iKq_nAK4E3m-eTURa7Afy4W7EIaG5Vsx8Q0a2DLGfz9hbFATBzE1TbQxId7/exec?${msg}`,
                         method: 'post',
                         headers: {
                             'Accept': 'application/json',
