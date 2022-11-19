@@ -84,35 +84,36 @@
                 }
             })
             $('form').submit(function (e) {
-                console.log($('input[name="type"]').val());
                 e.preventDefault();
-                liff.getProfile().then(function (profile) {
-                    let msg = '';
-                    const url = $('input[name="url"]').val();
-                    const price = $('input[name="price"]').val();
-                    const type = $('input[name="type"]:checked').val();
-                    msg += `name=${profile.displayName}&userId=${profile.userId}&url=${url}&price=${price}&type=${type}&`;
-                    if (type === 'every') {
-                        const amountOfMoney = $('input[name="amountOfMoney"]').val();
-                        msg += `amountOfMoney=${amountOfMoney}`
-                    } else if (type === 'end') {
-                        const endDate = $('input[name="endDate"]').val();
-                        msg += `endDate=${endDate.toString()}`;
-                    }
-                    $.ajax({
-                        url: `https://script.google.com/macros/s/AKfycbxpytDNcQabbllpUgPPBb_TaQXxIYwP_O8_7Wl7yOTTHZxG8ucnIpY3ZLx8ULsV61eG/exec?${msg}`,
-                        method: 'post',
-                        headers: {
-                            'Accept': 'application/json',
-                            'Content-Type': 'application/x-www-form-urlencoded',
-                        },
-                    }).then(function () {
-                        liff.closeWindow();
-                        return false;
-                    }).catch(function(e) {
-                        window.alert(e.message);
+                try {
+                    liff.getProfile().then(function (profile) {
+                        let msg = '';
+                        const url = $('input[name="url"]').val();
+                        const price = $('input[name="price"]').val();
+                        const type = $('input[name="type"]:checked').val();
+                        msg += `name=${profile.displayName}&userId=${profile.userId}&url=${url}&price=${price}&type=${type}&`;
+                        if (type === 'every') {
+                            const amountOfMoney = $('input[name="amountOfMoney"]').val();
+                            msg += `amountOfMoney=${amountOfMoney}`
+                        } else if (type === 'end') {
+                            const endDate = $('input[name="endDate"]').val();
+                            msg += `endDate=${endDate.toString()}`;
+                        }
+                        $.ajax({
+                            url: `https://script.google.com/macros/s/AKfycbxpytDNcQabbllpUgPPBb_TaQXxIYwP_O8_7Wl7yOTTHZxG8ucnIpY3ZLx8ULsV61eG/exec?${msg}`,
+                            method: 'post',
+                            headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/x-www-form-urlencoded',
+                            },
+                        }).then(function () {
+                            liff.closeWindow();
+                            return false;
+                        })
                     })
-                })
+                } catch (e) {
+                    window.alert('シミュレーションに失敗しました。入力した値が間違っていないかご確認ください。')
+                }
             });
         });
 
