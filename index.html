@@ -33,7 +33,7 @@
             <p>毎月積立てを行う金額を入力してください（半角数字, 例：5000）</p>
             <input class="form-control w-100 mt-1" name="amountOfMoney" required>
         </div>
-        <div id="endDate" style="display: none;">
+        <div id="endDate">
             <p>積立てを完了させたい日付を入力して下さい - 積立期間は最低2ヶ月以上からになります。後からでも変更可能ですので、ご安心くださいませ。</p>
             <input class="form-control w-100 mt-1" name="endDate">
         </div>
@@ -49,7 +49,7 @@
         $(document).ready(function () {
             const liffId = "1657664942-ayvy63nv";
             initializeLiff(liffId);
-            $('#endDate').hide();
+            $('#endDate').css('display', 'none');
         })
 
         function initializeLiff(liffId) {
@@ -65,6 +65,7 @@
         $(function () {
             $('input[name="type"]').change(function (e) {
                 const val = $(this).val;
+                console.log(val);
                 if (val === 'every') {
                     $('#amountOfMoney').css('display', 'block');
                     $('#endDate').css('display', 'none');
