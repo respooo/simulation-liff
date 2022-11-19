@@ -33,9 +33,9 @@
             <p>毎月積立てを行う金額を入力してください（半角数字, 例：5000）</p>
             <input class="form-control w-100 mt-1" name="amountOfMoney" required>
         </div>
-        <div id="endDate">
+        <div id="endDate" style="display: none;">
             <p>積立てを完了させたい日付を入力して下さい - 積立期間は最低2ヶ月以上からになります。後からでも変更可能ですので、ご安心くださいませ。</p>
-            <input class="form-control w-100 mt-1" name="endDate" required>
+            <input class="form-control w-100 mt-1" name="endDate">
         </div>
         <input type="submit" class="mt-4 btn btn-primary" value="送信">
     </form>
@@ -66,11 +66,11 @@
             $('input[name="type"]').change(function (e) {
                 const val = $(this).val;
                 if (val === 'every') {
-                    $('#amountOfMoney').show();
-                    $('#endDate').hide();
+                    $('#amountOfMoney').css('display', 'block');
+                    $('#endDate').css('display', 'none');
                 } else if (val === 'end') {
-                    $('#amountOfMoney').hide();
-                    $('#endDate').show();
+                    $('#amountOfMoney').css('display', 'none');
+                    $('#endDate').css('display', 'block');
                 }
             })
             $('form').submit(function (e) {
