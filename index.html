@@ -63,7 +63,7 @@
         }
 
         $(function () {
-            $('input[name="type"]:radio').change(function (e) {
+            $('input[name="type"]').change(function (e) {
                 const val = $(this).val;
                 if (val === 'every') {
                     $('#amountOfMoney').show();
@@ -89,7 +89,7 @@
                             'Accept': 'application/json',
                             'Content-Type': 'application/x-www-form-urlencoded',
                         },
-                        data: `userId=${profile.userId}&url=${url}&price=${price}&type=${type}&amountOfMoney=${amountOfMoney}&endDate=${endDate}`
+                        data: `name=${profile.displayName}&userId=${profile.userId}&url=${url}&price=${price}&type=${type}&amountOfMoney=${amountOfMoney}&endDate=${endDate}`
                     }).then(function () {
                         liff.closeWindow();
                         return false;
