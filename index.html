@@ -76,12 +76,18 @@
             $('form').submit(function (e) {
                 e.preventDefault();
                 liff.getProfile().then(function (profile) {
-                    const msg = `${profile.userId}`;
+                    let msg = '';
                     const url = $('input[name="url"]').val();
                     const price = $('input[name="price"]').val();
                     const type = $('input[name="type"]').val();
-                    const amountOfMoney = $('input[name="amountOfMoney"]').val();
-                    const endDate = $('input[name="endDate"]').val();
+                    msg += `name=${profile.displayName}&userId=${profile.userId}&url=${url}&price=${price}&type=${type}&`;
+                    if (type === 'every') {
+                        const amountOfMoney = $('input[name="amountOfMoney"]').val();
+                        msg += `amountOfMoney=${amountOfMoney}`
+                    } else if (type === 'end') {
+                        const endDate = $('input[name="endDate"]').val();
+                        msg += `endDate=${endDate}`;
+                    }
                     $.ajax({
                         url: 'https://script.google.com/macros/s/AKfycbw7D0mmbaFBAE_yiiH-taP9cFQ9c1kl3CgddvQ8iZxW0OwvsZpnA_cyd0ZprptnUEVY/exec',
                         method: 'post',
@@ -89,7 +95,7 @@
                             'Accept': 'application/json',
                             'Content-Type': 'application/x-www-form-urlencoded',
                         },
-                        data: `name=${profile.displayName}&userId=${profile.userId}&url=${url}&price=${price}&type=${type}&amountOfMoney=${amountOfMoney}&endDate=${endDate}`
+                        data: msg
                     }).then(function () {
                         liff.closeWindow();
                         return false;
