@@ -24,7 +24,7 @@
             2. いつまで貯金
             「いつまでに欲しいか」を入力して頂き、そこから商品単価を考慮し、「月々の積立金額」を算出します。</p>
         <div>
-            <input class="form-control" type="radio" name="type" id="every" value="every" required checked> 
+            <input class="form-control" type="radio" name="type" id="every" value="every" required> 
             <label for="every">毎月の積立金額を決める（月々いくら貯金）</label>
             <input class="form-control" type="radio" name="type" id="end" value="end" required> 
             <label for="end">積立達成の目標日を決める（いつまで貯金）</label>
@@ -49,8 +49,8 @@
         $(document).ready(function () {
             const liffId = "1657664942-ayvy63nv";
             initializeLiff(liffId);
+            $('#amountOfMoney').css('display', 'none');
             $('#endDate').css('display', 'none');
-            $('#amountOfMoneyForm').attr('required', true)
         })
 
         function initializeLiff(liffId) {
