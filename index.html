@@ -86,7 +86,7 @@
                     let msg = '';
                     const url = $('input[name="url"]').val();
                     const price = $('input[name="price"]').val();
-                    const type = $('input[name="type"]').val();
+                    const type = $('input[name="type"]:checked').val();
                     msg += `name=${profile.displayName}&userId=${profile.userId}&url=${url}&price=${price}&type=${type}&`;
                     if (type === 'every') {
                         const amountOfMoney = $('input[name="amountOfMoney"]').val();
