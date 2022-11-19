@@ -66,6 +66,7 @@
         $(function () {
             $('input[name="type"]').change(function (e) {
                 const val = $(this).val();
+                console.log(val);
                 if (val === 'every') {
                     $('#amountOfMoney').css('display', 'block');
                     $('#amountOfMoneyForm').attr('required', true)
@@ -79,6 +80,7 @@
                 }
             })
             $('form').submit(function (e) {
+                console.log($('input[name="type"]').val());
                 e.preventDefault();
                 liff.getProfile().then(function (profile) {
                     let msg = '';
