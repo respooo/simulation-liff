@@ -91,7 +91,7 @@
                         msg += `amountOfMoney=${amountOfMoney}`
                     } else if (type === 'end') {
                         const endDate = $('input[name="endDate"]').val();
-                        msg += `endDate=${endDate}`;
+                        msg += `endDate=${endDate.toString()}`;
                     }
                     window.alert(msg);
                     $.ajax({
