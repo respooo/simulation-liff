@@ -24,10 +24,18 @@
             2. いつまで貯金
             「いつまでに欲しいか」を入力して頂き、そこから商品単価を考慮し、「月々の積立金額」を算出します。</p>
         <div>
-            <input class="form-control" type="radio" name="type" id="every" required> 
+            <input class="form-control" type="radio" name="type" id="every" value="every" required> 
             <label for="every">毎月の積立金額を決める（月々いくら貯金）</label>
-            <input class="form-control" type="radio" name="type" id="end" required> 
+            <input class="form-control" type="radio" name="type" id="end" value="end" required> 
             <label for="end">積立達成の目標日を決める（いつまで貯金）</label>
+        </div>
+        <div id="amountOfMoney">
+            <p>毎月積立てを行う金額を入力してください（半角数字, 例：5000）</p>
+            <input class="form-control w-100 mt-1" name="amountOfMoney" required>
+        </div>
+        <div id="endDate">
+            <p>積立てを完了させたい日付を入力して下さい - 積立期間は最低2ヶ月以上からになります。後からでも変更可能ですので、ご安心くださいませ。</p>
+
         </div>
         <input type="submit" class="mt-4 btn btn-primary" value="送信">
     </form>
@@ -68,6 +76,16 @@
         const key = params.get('key');
 
         $(function () {
+            $('input[name="type"]:radio').change(function (e) {
+                const val = $(this).val;
+                if (val === 'every') {
+                    $('#amountOfMoney').show();
+                    $('#endDate').hide();
+                } else {
+                    $('#amountOfMoney').hide();
+                    $('#endDate').show();
+                }
+            })
             $('form').submit(function (e) {
                 e.preventDefault();
                 liff.getProfile().then(function (profile) {
