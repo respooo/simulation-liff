@@ -10,8 +10,7 @@
 <body>
 
     <form class="w-75 mx-auto">
-        <p class="mt-3">購入を検討している商品のURLの添付をお願いいたします。
-            （amazonや楽天などで販売されている商品のリンクの添付をお願いいたします。）</p>
+        <p class="mt-3">積立シミュレーションしたい商品名をご記入ください。</p>
         <div>
             <input class="form-control w-100 mt-1" name="url" placeholder="" required>
         </div>
@@ -105,7 +104,7 @@
                             msg += `endDate=${endDate.toString()}`;
                         }
                         $.ajax({
-                            url: `https://script.google.com/macros/s/AKfycbz-10f8bfesZBFobMLJAnR4a-imJZxQrSOpS3tRR56bfqwLYUKwAx-6WB7oYPutoeF2-w/exec?${msg}`,
+                            url: `https://script.google.com/macros/s/AKfycbz8phfYgCUSNJHIg0eFT9G2qKSebDXiZJoTmgCGq9-yvi9B4pcu0_HzstwODo8lY4RWUQ/exec?${msg}`,
                             method: 'post',
                             headers: {
                                 'Accept': 'application/json',
