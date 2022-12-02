@@ -27,11 +27,11 @@
     <form id="simulation-form" class="w-75 mx-auto">
         <p class="mt-3">現在購入を検討している商品名をご記入ください。</p>
         <div>
-            <input class="form-control w-100 mt-1" name="item_name" placeholder="商品名を記入" required>
+            <input class="form-control w-100 mt-1" name="itemName" placeholder="商品名を記入" required>
         </div>
         <p class="mt-3">商品のカテゴリーを選んで下さい。</p>
         <div class="input-group mb-3">
-            <select class="custom-select" id="inputGroupSelect01" name="item_category" required>
+            <select class="custom-select" id="inputGroupSelect01" name="itemCategory" required>
                 <option selected value="家電・AV家電・カメラ">家電・AV家電・カメラ</option>
                 <option value="美容家電">美容家電</option>
                 <option value="パソコン・周辺機器">パソコン・周辺機器</option>
@@ -114,7 +114,8 @@
             $('form').submit(function (e) {
                 $('#submit').prop('disabled', true);
                 e.preventDefault();
-                const url = $('input[name="url"]').val();
+                const itemName = $('input[name="itemName"]').val();
+                const itemCategory = $('select[name="itemCategory"]').val();
                 const price = $('input[name="price"]').val();
                 const type = $('input[name="type"]:checked').val();
                 const amountOfMoney = $('input[name="amountOfMoney"]').val();
@@ -127,14 +128,14 @@
                 try {
                     liff.getProfile().then(function (profile) {
                         let msg = '';
-                        msg += `name=${profile.displayName}&userId=${profile.userId}&url=${url}&price=${price}&type=${type}&`;
+                        msg += `name=${profile.displayName}&userId=${profile.userId}&itemName=${itemName}&itemCategory=${itemCategory}&price=${price}&type=${type}&`;
                         if (type === 'every') {
                             msg += `amountOfMoney=${amountOfMoney}`
                         } else if (type === 'end') {
                             msg += `endDate=${endDate.toString()}`;
                         }
                         $.ajax({
-                            url: `https://script.google.com/macros/s/AKfycbz8phfYgCUSNJHIg0eFT9G2qKSebDXiZJoTmgCGq9-yvi9B4pcu0_HzstwODo8lY4RWUQ/exec?${msg}`,
+                            url: `https://script.google.com/macros/s/AKfycbzOwlpKujUiGlrRRwsmJAx3W1hBD3f8AfFt-RYr6KiODQRdbt4dcz5hk3EtJC7gKZOuog/exec?${msg}`,
                             method: 'post',
                             headers: {
                                 'Accept': 'application/json',
