@@ -128,14 +128,14 @@
                 try {
                     liff.getProfile().then(function (profile) {
                         let msg = '';
-                        msg += `name=${profile.displayName}&userId=${profile.userId}&itemName=${itemName}&itemCategory=${itemCategory}&price=${price}&type=${type}&`;
+                        msg += `name=${profile.displayName}&userId=${profile.userId}&itemName=${itemName}&itemCategory=${itemCategory}&price=${price}&type=${type}&source=simulation`;
                         if (type === 'every') {
                             msg += `amountOfMoney=${amountOfMoney}`
                         } else if (type === 'end') {
                             msg += `endDate=${endDate.toString()}`;
                         }
                         $.ajax({
-                            url: `https://script.google.com/macros/s/AKfycbxmF4jgarQKJyXPDB3-XqPVoCiictPj927QyxpEQJl7NFEVWWNLuhpC6xCUC8FyeUcyzA/exec?${msg}`,
+                            url: `https://script.google.com/macros/s/AKfycbxlaPtge_F4abksQLwVOzCp8VXLmVPEbsV6EphMeej4gkO4niVfomHwVNmr7MZGEZvNlg/exec?${msg}`,
                             method: 'post',
                             headers: {
                                 'Accept': 'application/json',
