@@ -128,7 +128,7 @@
                 try {
                     liff.getProfile().then(function (profile) {
                         let msg = '';
-                        msg += `name=${profile.displayName}&userId=${profile.userId}&itemName=${itemName}&itemCategory=${itemCategory}&price=${price}&type=${type}&source=simulation`;
+                        msg += `name=${profile.displayName}&userId=${profile.userId}&itemName=${itemName}&itemCategory=${itemCategory}&price=${price}&type=${type}&source=simulation&`;
                         if (type === 'every') {
                             msg += `amountOfMoney=${amountOfMoney}`
                         } else if (type === 'end') {
