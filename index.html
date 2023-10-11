@@ -15,8 +15,8 @@
       </div>
       <div class="card-body">
         <p class="card-text">
-          このサービスを利用することでいくらお得に購入できるのかを把握することが出来ます。<br>
-          フォームを送信すると、LINEのメッセージ上で月々の積立額と積立を達成した際のキャッシュバックの金額が表示されます。
+            いくらお得に購入できるかをシミュレーションすることが出来ます。<br>
+            フォームを送信すると、LINEメッセージで月々の積立額と積立を達成した際のキャッシュバック金額が表示されます。
         </p>
       </div>
       <div class="card-footer text-muted">
@@ -25,7 +25,7 @@
     </div>
 
     <form id="simulation-form" class="w-75 mx-auto">
-        <p class="mt-3">現在購入を検討している商品名をご記入ください。</p>
+        <p class="mt-3">購入を検討している商品名をご記入ください。</p>
         <div>
             <input class="form-control w-100 mt-1" name="itemName" placeholder="商品名を記入" required>
         </div>
@@ -44,29 +44,29 @@
                 <option value="その他">その他</option>
             </select>
         </div>
-        <p class="mt-3">商品の金額を入力してください。カンマ入れずに入力をお願い致します。</p>
+        <p class="mt-3">商品の金額をカンマを入れずに入力してください。</p>
         <div>
             <input type="number" class="form-control w-100 mt-1" name="price" placeholder="半角数字, 例: 50000" required>
         </div>
-        <p class="mt-3">どちらの積立方法を検討していますか？ <br /><strong>1. 月々いくら貯金</strong><br />
-            「月々いくらまでなら支払えるか」を入力して頂き、「目標達成日」をシミュレーションします。
+        <p class="mt-3">積立方法を選択してください。  <br /><strong>1. 月々いくら貯金</strong><br />
+            「月々の積立金額」から、「目標達成日」をシミュレーションします。
             <br /><strong>2. いつまで貯金</strong><br />
-            「いつまでに欲しいか」を入力して頂き、「月々の積立金額」をシミュレーションします。</p>
+            「いつまでに欲しいか」から、「月々の積立金額」をシミュレーションします。</p>
         <div class="form-check">
             <input class="form-check-input" type="radio" name="type" id="every" value="every" required>
-            <label class="form-check-label" for="every">月々いくら貯金（毎月の積立金額を決める）</label>
+            <label class="form-check-label" for="every">月々いくら貯金</label>
         </div>
         <div class="form-check">
             <input class="form-check-input" type="radio" name="type" id="end" value="end" required>
-            <label class="form-check-label" for="end">いつまで貯金（積立達成の目標日を決める）</label>
+            <label class="form-check-label" for="end">いつまで貯金</label>
         </div>
         <div id="amountOfMoney">
-            <p class="mt-3">毎月積立てを行う金額を入力してください（半角数字, 例：5000）</p>
+            <p class="mt-3">毎月の積立金額を入力してください</p>
             <input id="amountOfMoneyForm" type="number" class="form-control w-100 mt-1" name="amountOfMoney">
         </div>
         <div id="endDate">
-        <p class="mt-3">積立てを完了させたい日付を入力して下さい。積立期間は最低3ヶ月以上からになります。後からでも変更可能ですので、ご安心くださいませ。</p>
-            <input id=""endDateForm type="date" class="form-control w-100 mt-1" name="endDate">
+        <p class="mt-3">積立てを完了したい日付を入力して下さい。積立期間は最低3ヶ月以上からになります。後からでも変更可能です。</p>
+            <input id=""endDateForm type="date" class="form-control w-100 mt-1" name="endDate" placeholder="半角数字, 例: 50000">
         </div>
         <div class="text-center">
             <input id="submit" type="submit" class="mt-4 btn btn-primary" value="送信">
